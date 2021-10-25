@@ -7,8 +7,10 @@
 ARG PHP_VERSION=8.0
 ARG CADDY_VERSION=2
 
+
+
 # "php" stage
-FROM php:${PHP_VERSION}-fpm-alpine AS symfony_php
+FROM php:${PHP_VERSION}-fpm-alpine AS symfony_otel_php_base
 
 # persistent / runtime deps
 RUN apk add --no-cache \
@@ -37,17 +39,25 @@ RUN set -eux; \
 	docker-php-ext-install -j$(nproc) \
 		intl \
 		zip \
-	; \
-	pecl install \
+	;
+
+RUN	pecl install \
 		apcu-${APCU_VERSION} \
-	; \
-	pecl clear-cache; \
-	docker-php-ext-enable \
+	;
+
+
+RUN apk add $PHPIZE_DEPS libstdc++ zlib-dev linux-headers \
+    && CPPFLAGS="-Wno-maybe-uninitialized" pecl install grpc-1.35.0 \
+    && docker-php-ext-enable grpc
+
+RUN pecl clear-cache
+
+RUN docker-php-ext-enable \
 		apcu \
 		opcache \
-	; \
-	\
-	runDeps="$( \
+	;
+
+RUN	runDeps="$( \
 		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
 			| tr ',' '\n' \
 			| sort -u \
@@ -81,21 +91,8 @@ ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
 WORKDIR /srv/app
 
-# Allow to choose skeleton
-ARG SKELETON="symfony/skeleton"
-ENV SKELETON ${SKELETON}
 
-# Allow to use development versions of Symfony
-ARG STABILITY="stable"
-ENV STABILITY ${STABILITY}
-
-# Allow to select skeleton version
-ARG SYMFONY_VERSION=""
-ENV SYMFONY_VERSION ${SYMFONY_VERSION}
-
-# Download the Symfony skeleton and leverage Docker cache layers
-RUN composer create-project "${SKELETON} ${SYMFONY_VERSION}" . --stability=$STABILITY --prefer-dist --no-dev --no-progress --no-interaction; \
-	composer clear-cache
+FROM symfony_otel_php_base as symfony_otel_php
 
 ###> recipes ###
 ###< recipes ###
@@ -128,5 +125,9 @@ WORKDIR /srv/app
 
 COPY --from=dunglas/mercure:v0.11 /srv/public /srv/mercure-assets/
 COPY --from=symfony_caddy_builder /usr/bin/caddy /usr/bin/caddy
-COPY --from=symfony_php /srv/app/public public/
+COPY --from=symfony_otel_php /srv/app/public public/
 COPY docker/caddy/Caddyfile /etc/caddy/Caddyfile
+
+
+
+
