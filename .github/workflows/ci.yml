@@ -26,6 +26,6 @@ jobs:
                   done
                   exit 1
             - name: Check HTTP reachability
-              run: curl http://localhost
+              run: curl http://localhost:8081
             - name: Check HTTPS reachability
-              run: curl -k https://localhost
+              run: curl -k https://localhost:8443
