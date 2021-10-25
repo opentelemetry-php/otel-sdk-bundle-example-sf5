@@ -452,12 +452,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tidal/opentelemetry-php-contrib.git",
-                "reference": "cee6e5b588fd3cb23f40881b2ebbdd93c0372d2d"
+                "reference": "4fdaac52d04da68909b72c7ea2869caac4f06680"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tidal/opentelemetry-php-contrib/zipball/cee6e5b588fd3cb23f40881b2ebbdd93c0372d2d",
-                "reference": "cee6e5b588fd3cb23f40881b2ebbdd93c0372d2d",
+                "url": "https://api.github.com/repos/tidal/opentelemetry-php-contrib/zipball/4fdaac52d04da68909b72c7ea2869caac4f06680",
+                "reference": "4fdaac52d04da68909b72c7ea2869caac4f06680",
                 "shasum": ""
             },
             "require": {
@@ -528,7 +528,7 @@
             "support": {
                 "source": "https://github.com/tidal/opentelemetry-php-contrib/tree/sf_bundle"
             },
-            "time": "2021-10-22T08:55:19+00:00"
+            "time": "2021-10-25T07:23:18+00:00"
         },
         {
             "name": "php-http/discovery",
