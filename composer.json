@@ -18,15 +18,16 @@
         "php": ">=7.2.5|>=8.0.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/annotations": "^1.13",
+        "kriswallsmith/buzz": "^1.2",
+        "nyholm/psr7": "^1.4",
+        "open-telemetry/opentelemetry-php-contrib": "dev-sf_bundle",
         "symfony/console": "5.3.*",
         "symfony/dotenv": "5.3.*",
         "symfony/flex": "^1.3.1",
         "symfony/framework-bundle": "5.3.*",
         "symfony/runtime": "5.3.*",
-        "symfony/yaml": "5.3.*",
-        "open-telemetry/opentelemetry-php-contrib": "dev-sf_bundle",
-        "nyholm/psr7": "^1.4",
-        "kriswallsmith/buzz": "^1.2"
+        "symfony/yaml": "5.3.*"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.34"
