@@ -64,9 +64,11 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
+            "composer dump-autoload --optimize",
             "@auto-scripts"
         ],
         "post-update-cmd": [
+            "composer dump-autoload --optimize",
             "@auto-scripts"
         ]
     },
