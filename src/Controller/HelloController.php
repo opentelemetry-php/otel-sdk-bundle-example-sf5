@@ -43,8 +43,10 @@ class HelloController extends AbstractController
             $controllerSpan = $this->startSpan(__METHOD__);
         }
 
+        $controllerSpan->addEvent('Start doing stuff');
         // simulate some computation
         usleep(50000);
+        $controllerSpan->addEvent('Finished doing stuff');
 
         // check if we should sample
         if ($this->shouldSample()) {
