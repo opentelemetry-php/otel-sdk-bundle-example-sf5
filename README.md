@@ -7,7 +7,7 @@ general documentation, please take a look there.
 
 Apart from the demo application code the installation of the PHP gRPC extension has been added to the definition
 of the [PHP image](/Dockerfile). Jaeger and Zipkin collector services have been added to the 
-[docker-compose.yaml](/docker-compose.yaml).
+[docker-compose.yml](/docker-compose.yml).
 
 ## Usage:
 
