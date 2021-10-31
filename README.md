@@ -19,7 +19,7 @@ docker-compose up
 
 - The first time you start the services, the images will be build. Keep in mind, that compiling the gRPC extension can 
 take quite a while (10-15 mins), so please be patient (or go grab a coffee or do something else, while the 
-images ae build). We will address this issue in the future by proving a base image which will already include
+images are built). We will address this issue in the future by proving a base image which will already include
 the gRPC extension.
 
 - Once the services are starting, wait until the PHP (fpm) service tells that it can accept requests.
