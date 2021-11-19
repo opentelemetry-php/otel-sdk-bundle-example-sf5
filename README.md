@@ -30,7 +30,7 @@ the gRPC extension.
 should see the appropriate demo page.
 
 - Follow the links on the page to the Jaeger and Zipkin GUIs and search under "OtelBundle Demo app" for the tracing reports.
-You should see $ pans (3 child spans), with events and attributes added to the main span.
+You should see 4 pans (3 child spans), with events and attributes added to the main span.
 - Go to the [config file](/config/packages/otel_sdk.yaml) for the bundle and change the sampler from `always_on` to 
 `always_off`. Now if you reload the demo page, you will see that no tracing data has been sent to the collectors.
 
