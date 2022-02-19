@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenTelemetry\SDK\Trace\Tracer;
-use OpenTelemetry\Instrumentation\Symfony\OtelSdkBundle;
+use OpenTelemetry\Symfony\OtelSdkBundle;
 
 class HelloController extends AbstractController
 {

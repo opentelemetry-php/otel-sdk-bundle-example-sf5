@@ -11,7 +11,7 @@ use OpenTelemetry\SDK\Trace\SamplerInterface;
 use OpenTelemetry\SDK\Trace\RandomIdGenerator;
 use OpenTelemetry\SDK\Trace\SamplingResult;
 use OpenTelemetry\Context\Context;
-use OpenTelemetry\Instrumentation\Symfony\OtelSdkBundle;
+use OpenTelemetry\Symfony\OtelSdkBundle;
 use Symfony\Contracts\EventDispatcher\Event as BaseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
