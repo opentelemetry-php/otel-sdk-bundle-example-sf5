@@ -14,8 +14,8 @@
     Trace ID: <b>{{ trace_id }}</b>
 
     <ul>
-        <li>Controller Span ID: <b>{{ controller_span_id }}</b></li>
-        <li>Template Span ID: <b>{{ template_span_id }}</b></li>
+        <li>Controller Span ID ({{ controller_sampling_decision }}): <b>{{ controller_span_id }}</b></li>
+        <li>Template Span ID ({{ template_sampling_decision }}): <b>{{ template_span_id }}</b></li>
     </ul>
 
     You can see the tracing metrics at:
