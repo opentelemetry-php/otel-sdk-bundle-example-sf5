@@ -21,11 +21,12 @@
         "doctrine/annotations": "^1.13",
         "kriswallsmith/buzz": "^1.2",
         "nyholm/psr7": "^1.4",
-        "open-telemetry/opentelemetry-php-contrib": "dev-sf_bundle",
+        "open-telemetry/opentelemetry-php-contrib": "dev-main",
         "symfony/console": "5.3.*",
         "symfony/dotenv": "5.3.*",
         "symfony/flex": "^1.3.1",
         "symfony/framework-bundle": "5.3.*",
+        "symfony/http-client": "5.3.*",
         "symfony/monolog-bundle": "^3.7",
         "symfony/runtime": "5.3.*",
         "symfony/twig-bundle": "5.3.*",
@@ -41,7 +42,12 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "symfony/flex": true,
+            "symfony/runtime": true,
+            "composer/package-versions-deprecated": true
+        }
     },
     "autoload": {
         "psr-4": {
