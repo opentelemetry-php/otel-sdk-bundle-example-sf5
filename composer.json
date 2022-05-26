@@ -5,12 +5,6 @@
     "description": "A minimal Symfony project recommended to create bare bones applications",
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/tidal/opentelemetry-php-contrib"
-        }
-    ],
     "platform": {
         "ext-grpc": "1.14.0"
     },
@@ -21,7 +15,7 @@
         "doctrine/annotations": "^1.13",
         "kriswallsmith/buzz": "^1.2",
         "nyholm/psr7": "^1.4",
-        "open-telemetry/opentelemetry-php-contrib": "dev-main",
+        "open-telemetry/contrib-sdk-bundle": "~0.0.4",
         "symfony/console": "5.3.*",
         "symfony/dotenv": "5.3.*",
         "symfony/flex": "^1.3.1",
@@ -35,6 +29,7 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "symfony/maker-bundle": "^1.34"
     },
     "config": {
