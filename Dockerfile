@@ -27,6 +27,7 @@ RUN apk add --no-cache \
 ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so
 
 ARG APCU_VERSION=5.1.20
+ARG GRPC_VERSION=1.42.0
 RUN set -eux; \
 	apk add --no-cache --virtual .build-deps \
 		$PHPIZE_DEPS \
@@ -47,7 +48,7 @@ RUN	pecl install \
 
 
 RUN apk add $PHPIZE_DEPS libstdc++ zlib-dev linux-headers \
-    && CPPFLAGS="-Wno-maybe-uninitialized" pecl install grpc-1.35.0 \
+    && CPPFLAGS="-Wno-maybe-uninitialized" pecl install grpc-${GRPC_VERSION} \
     && docker-php-ext-enable grpc
 
 RUN pecl clear-cache
@@ -82,7 +83,8 @@ RUN chmod +x /usr/local/bin/docker-entrypoint
 
 VOLUME /var/run/php
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+ARG COMPOSER_VERSION=2.2.24
+RUN curl -sS https://getcomposer.org/installer | php -- --version=${COMPOSER_VERSION} --install-dir=/usr/local/bin --filename=composer
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
